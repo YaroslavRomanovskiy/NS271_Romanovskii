@@ -1,0 +1,14 @@
+sklearn
+pandas
+torch
+torchvision
+torchaudio
+tensorboard
+matplotlib
+nbformat
+
+# Windows only
+# PySoundFile
+
+# Linux only
+# sox
