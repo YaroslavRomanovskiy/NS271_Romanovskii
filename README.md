@@ -15,9 +15,46 @@
 
 ## Данные
 
-Для генерации датасета для обучения нейросети используется численное моделирование прохождения импульсов с различными начальными параметрами через нелинейную среду при помощи библиотеки PyNLO [4]. PyNLO позволяет получить численное решение одномерного обобщенного нестационарного уравнения Шрёдингера. Для оптимизации вычислений при генерации датасета в сервисе Яндекс Датасфера были реализованы параллельные вычисления при помощи библиотеки multiprocessing, в результате вычисление 202 000 импульсов занимает около 30 минут вместо нескольких часов при последовательных вычислениях.
+Для генерации датасета для обучения нейросети используется численное моделирование прохождения импульсов с различными начальными параметрами через нелинейную среду при помощи библиотеки PyNLO [1]. PyNLO позволяет получить численное решение одномерного обобщенного нестационарного уравнения Шрёдингера. Для оптимизации вычислений при генерации датасета в сервисе Яндекс Датасфера были реализованы параллельные вычисления при помощи библиотеки multiprocessing, был сгенерирован датасет на 202 000 импульсов. 
 
+## Модель
 
+В качестве модели используется полносвязная нейросеть (архитектура на схеме ниже), пример её работы есть в папке notebooks в блокноте Model_for_reference_GitHub.ipynb.
 
+![Схема](https://s548vla.storage.yandex.net/rdisk/663c41b8c3304cb6a6f369660e80f81d0f4bffe238a73e48d0f75cb73a8cf7f8/67453e16/fKqInKw3d7bLFOeFnMGnhCjDhQoGk9ioosUmeciJU93uO44R00amsXII2TWCiAiSCKdN9bU0NPpVRSRakKch4b_7sZBx7hgLQb59F-OIV4mr8npumZHI4midPdWhecNq?uid=1130000056333972&filename=%D0%A0%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1130000056333972&fsize=16273&hid=019b13467c8d2061e7fb15aaf1129bc7&media_type=image&tknv=v2&etag=d33d9e5b18fb1ffe7d67ca3b0cf89079&ts=627c84e9b3180&s=a41e6f99ac0faccfb01d5554165a321acc939f0ce9d34c2448a4cd76dd3353e0&pb=U2FsdGVkX19ZFjjU3QHZhqvfyb5zTsdsYTPV_aPD5MwDJcIwt5HGucF-JSxO0bm5AhPHS9xisbjMgIZTeWFAR0aFPY1dYqVuXXfG5bRlXiYKCKB6AdRFg0T7lQHvghy8)
+
+Гиперпараметры:
+- *Оптимизатор* AdamW( lr = 0.001,  gamma=0.9)
+- *Функция потерь* MSELoss
+- batch_size = 256
+  
+Метрика качества:
+- Ошибка восстановления пиковой интенсивности
+- Ошибка восстановления длительности FWHM импульса
+
+![Схема](https://s719sas.storage.yandex.net/rdisk/6958b1a54c413a9ce4fd2ad73badb1b2fb6a562b894f993d5c76f51ee4076513/674540cc/fKqInKw3d7bLFOeFnMGnhJM_jWgTkIX8x7NLEwKjp1VlOR9X4PprydGNp2CxilIlPUaXlrU7dJkUQSePUzw6Ac0f4Q69HSauiTWHLXPA-eer8npumZHI4midPdWhecNq?uid=1130000056333972&filename=%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202024-11-26%20022958.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1130000056333972&fsize=55325&hid=ffd7595d3265c906bcda530681dcc8ac&media_type=image&tknv=v2&etag=ee38c7afd5a52301a354dbcd7f3f5b61&ts=627c877f8cb00&s=3f01d7cc6d9f909377520b53d4f13910a13ef0e5754fc5a1cfc7379788ce1c91&pb=U2FsdGVkX1_6iaaDJybCJDjJn6E_a9o6bCaZHQq0ux-FIeKrwKPhK1Eoi4fK5OxAOdkXzYS2hrbBS7PNVfJ8v7zLJKm-cqtGwj9gdYeq80i72OHeTNOJqSjdgya9Cu2y)
+Loss и метрики качества на тренировочном и тестовом датасете.
+## Результаты на тестовом датасете
+
+Пример восстановления фазы моделью (оранжевая прерывистая) на тестовом датасете:
+
+![image](https://github.com/user-attachments/assets/1d19fe25-ef6a-450d-aea6-fb857fe58d13)
+
+И распределение ошибки пиковой интенсивности и длительности по тестовому датасету:
+![image](https://github.com/user-attachments/assets/4911cc33-1bb6-426d-9b3a-d7ad9a2a4d9f)
+FWHM: 4.9% среднее, станд. откл. 9.4%
+Пиковая интенсивность: 3.2% среднее, станд. откл. 4.9%
+
+## Результаты на экспериментальных данных
+
+При проверке на реальных данных OPA-системы референсное значение исходной фазы и длительности определялось методом SHG-FROG.
+![image](https://github.com/user-attachments/assets/c0801571-4fbb-4722-b377-096bc51709c8)
+
+Таким образом, модель восстановила длительность 217 фс, а методика SHG-FROG 213 фс. 
+
+## Список литературы
+[1] https://github.com/pyNLO/PyNLO  
+[2] Stanfield, Matthew, et al. "Real-time reconstruction of high energy, ultrafast laser pulses using deep learning." Scientific reports 12.1 (2022): 5299.  
+[3] Mitrofanov A. V. et al. Post-filament self-trapping of ultrashort laser pulses //Optics Letters. – 2014. – Т. 39. – №. 16. – С. 4659-4662.
 
 
