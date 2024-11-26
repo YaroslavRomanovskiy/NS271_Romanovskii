@@ -60,4 +60,8 @@ FWHM: 4.9% среднее, станд. откл. 9.4%
 [2] Stanfield, Matthew, et al. "Real-time reconstruction of high energy, ultrafast laser pulses using deep learning." Scientific reports 12.1 (2022): 5299.  
 [3] Mitrofanov A. V. et al. Post-filament self-trapping of ultrashort laser pulses //Optics Letters. – 2014. – Т. 39. – №. 16. – С. 4659-4662.
 
+## Проверка кода модели
+
+Вы можете выполнить блокнот **Model_for_reference_GitHub.ipynb** (например, в Google Colab или Яндекс Датасфере) для получения основных результатов этого файла.
+
 
