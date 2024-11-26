@@ -21,7 +21,8 @@
 
 В качестве модели используется полносвязная нейросеть (архитектура на схеме ниже), пример её работы есть в папке notebooks в блокноте Model_for_reference_GitHub.ipynb.
 
-![Схема](https://s548vla.storage.yandex.net/rdisk/663c41b8c3304cb6a6f369660e80f81d0f4bffe238a73e48d0f75cb73a8cf7f8/67453e16/fKqInKw3d7bLFOeFnMGnhCjDhQoGk9ioosUmeciJU93uO44R00amsXII2TWCiAiSCKdN9bU0NPpVRSRakKch4b_7sZBx7hgLQb59F-OIV4mr8npumZHI4midPdWhecNq?uid=1130000056333972&filename=%D0%A0%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA1.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1130000056333972&fsize=16273&hid=019b13467c8d2061e7fb15aaf1129bc7&media_type=image&tknv=v2&etag=d33d9e5b18fb1ffe7d67ca3b0cf89079&ts=627c84e9b3180&s=a41e6f99ac0faccfb01d5554165a321acc939f0ce9d34c2448a4cd76dd3353e0&pb=U2FsdGVkX19ZFjjU3QHZhqvfyb5zTsdsYTPV_aPD5MwDJcIwt5HGucF-JSxO0bm5AhPHS9xisbjMgIZTeWFAR0aFPY1dYqVuXXfG5bRlXiYKCKB6AdRFg0T7lQHvghy8)
+![image](https://github.com/user-attachments/assets/97de847a-2760-456d-a4df-fb8a870a1c40)
+
 
 Гиперпараметры:
 - *Оптимизатор* AdamW( lr = 0.001,  gamma=0.9)
