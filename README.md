@@ -29,6 +29,7 @@
 - *Оптимизатор* AdamW( lr = 0.001,  gamma=0.9)
 - *Функция потерь* MSELoss
 - batch_size = 256
+- lr_scheduler.ReduceLROnPlateau
   
 Метрика качества:
 - Ошибка восстановления пиковой интенсивности
