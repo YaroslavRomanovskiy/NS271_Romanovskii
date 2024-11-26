@@ -21,7 +21,8 @@
 
 В качестве модели используется полносвязная нейросеть (архитектура на схеме ниже), пример её работы есть в папке notebooks в блокноте Model_for_reference_GitHub.ipynb.
 
-![image](https://github.com/user-attachments/assets/97de847a-2760-456d-a4df-fb8a870a1c40)
+![image](https://github.com/user-attachments/assets/2df11b7f-9a80-4f1a-9690-b81ba60fe671)
+
 
 
 Гиперпараметры:
