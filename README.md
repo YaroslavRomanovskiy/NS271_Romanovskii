@@ -35,8 +35,9 @@
 - Ошибка восстановления пиковой интенсивности (используется для оценки качества работы модели во время обучения как целевая метрика)
 - Ошибка восстановления длительности FWHM (Full Width Half Maximum) импульса
 
-![Схема](https://s719sas.storage.yandex.net/rdisk/6958b1a54c413a9ce4fd2ad73badb1b2fb6a562b894f993d5c76f51ee4076513/674540cc/fKqInKw3d7bLFOeFnMGnhJM_jWgTkIX8x7NLEwKjp1VlOR9X4PprydGNp2CxilIlPUaXlrU7dJkUQSePUzw6Ac0f4Q69HSauiTWHLXPA-eer8npumZHI4midPdWhecNq?uid=1130000056333972&filename=%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202024-11-26%20022958.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1130000056333972&fsize=55325&hid=ffd7595d3265c906bcda530681dcc8ac&media_type=image&tknv=v2&etag=ee38c7afd5a52301a354dbcd7f3f5b61&ts=627c877f8cb00&s=3f01d7cc6d9f909377520b53d4f13910a13ef0e5754fc5a1cfc7379788ce1c91&pb=U2FsdGVkX1_6iaaDJybCJDjJn6E_a9o6bCaZHQq0ux-FIeKrwKPhK1Eoi4fK5OxAOdkXzYS2hrbBS7PNVfJ8v7zLJKm-cqtGwj9gdYeq80i72OHeTNOJqSjdgya9Cu2y)
-Loss и целевая метрика (ошибка восстановления пиковой интенсивности) на тренировочном и валидационном датасете.
+Loss и целевая метрика (ошибка восстановления пиковой интенсивности) на тренировочном и валидационном датасете:
+![loss](https://github.com/user-attachments/assets/06b7199a-51e8-46f1-8643-332f5cb3a6dc)
+
 ## Результаты на тестовом датасете
 
 Пример восстановления фазы моделью (оранжевая прерывистая) на тестовом датасете:
